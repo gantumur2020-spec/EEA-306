@@ -45,17 +45,17 @@ h1,h2,h3{text-wrap:balance;line-height:1.25;margin:0}
 .side{background:var(--navy);color:var(--side-fg);padding:20px 14px calc(20px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px));position:sticky;top:0;height:100vh;overflow-y:auto}
 .brand{display:flex;gap:10px;align-items:center;padding:4px 8px 18px}
 .brand svg{flex:none}
-.brand b{display:block;font-size:15px;color:#fff;line-height:1.2}
+.brand b{display:block;font-size:15px;color:var(--side-strong,#fff);line-height:1.2}
 .brand small{color:var(--side-muted);font-size:12px}
 .grp{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--side-muted);margin:16px 10px 6px;font-weight:600}
 .nav a,.nav button{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border-radius:8px;color:var(--side-fg);text-decoration:none;background:none;border:0;text-align:left;font-size:14px}
-.nav a:hover,.nav button:hover{background:rgba(255,255,255,.07)}
+.nav a:hover,.nav button:hover{background:var(--side-hover,rgba(255,255,255,.07))}
 .nav a.on{background:var(--accent);color:#fff}
 .nav svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8}
-.sub{margin:2px 0 6px 18px;border-left:1px solid rgba(255,255,255,.12);padding-left:6px}
+.sub{margin:2px 0 6px 18px;border-left:1px solid var(--side-line,rgba(255,255,255,.12));padding-left:6px}
 .sub a{font-size:13px;padding:5px 8px;gap:8px}
 .sub a .n{font-family:var(--f-mono);font-size:11px;color:var(--side-muted);width:18px}
-.sub a.on .n{color:#fff}
+.sub a.on .n,.nav a.on .n{color:#fff!important}
 .sub a .dot{margin-left:auto;width:6px;height:6px;border-radius:50%;background:#3fbf7f}
 .chev{margin-left:auto;transition:transform .2s}
 .open>.chev{transform:rotate(90deg)}
@@ -79,7 +79,7 @@ h1,h2,h3{text-wrap:balance;line-height:1.25;margin:0}
 .small{font-size:13px}
 
 /* hero */
-.hero{position:relative;overflow:hidden;border-radius:var(--radius);background:linear-gradient(115deg,#0b2556 0%,#123a7d 55%,#c8662a 100%);color:#fff;padding:26px 28px;min-height:220px}
+.hero{position:relative;overflow:hidden;border-radius:var(--radius);background:var(--hero,linear-gradient(115deg,#0b2556 0%,#123a7d 55%,#c8662a 100%));color:#fff;padding:26px 28px;min-height:220px}
 .hero svg.towers{position:absolute;right:0;bottom:0;height:100%;width:62%;opacity:.55;pointer-events:none}
 .hero>*{position:relative}
 .hero .code{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;background:rgba(255,255,255,.14);padding:3px 8px;border-radius:6px;display:inline-block;margin-bottom:10px}
@@ -198,6 +198,58 @@ td.c,th.c{text-align:center;font-family:var(--f-mono);font-variant-numeric:tabul
 .labitem:last-child{border:0}
 .kw{display:flex;flex-wrap:wrap;gap:6px}
 .kw span{font-size:12.5px;background:var(--surface-2);border:1px solid var(--line);border-radius:20px;padding:3px 10px}
+
+.login{max-width:440px;margin:6vh auto 0}
+.login .hero{min-height:0;margin-bottom:14px}
+.swatches{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 12px}
+.sw{width:118px;border:2px solid var(--line);border-radius:10px;padding:0;overflow:hidden;background:var(--surface);color:var(--fg);text-align:left}
+.sw.on{border-color:var(--fg)}
+.sw i{display:block;height:34px;position:relative}
+.sw i b{position:absolute;left:0;top:0;bottom:0;width:30%;border-right:1px solid rgba(0,0,0,.08)}
+.swgrp{font-size:12px;color:var(--muted);margin:10px 0 0;font-weight:600}
+.sw span{display:block;font-size:12px;padding:4px 8px}
+.roster{width:100%;min-height:150px;font-family:var(--f-mono);font-size:12.5px;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--surface);color:var(--fg)}
+.userchip{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--side-fg);padding:10px 12px;margin-top:10px;border-top:1px solid var(--side-line,rgba(255,255,255,.12))}
+.userchip button{margin-left:auto;background:none;border:1px solid var(--side-line,rgba(255,255,255,.3));color:var(--side-fg);border-radius:7px;padding:3px 9px;font-size:12px}
+
+/* эвхэгддэг лекцийн жагсаалт */
+.lecgrp{display:flex!important;align-items:center;gap:8px;margin:14px 0 4px;padding:9px 10px!important;border-radius:9px;background:var(--side-btn,rgba(255,255,255,.06))!important;color:var(--side-strong,#fff)!important;font-weight:700;font-size:13px!important;letter-spacing:.06em;text-transform:uppercase}
+.lecgrp:hover{background:var(--side-btn-h,rgba(255,255,255,.12))!important}
+.lecgrp .cnt{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:0;background:var(--accent);color:#fff;border-radius:20px;padding:1px 8px;text-transform:none}
+.lecgrp .cur{font-weight:500;letter-spacing:0;text-transform:none;color:var(--side-muted);font-size:12px}
+.lecgrp .chev{margin-left:auto;width:16px!important;height:16px!important;transition:transform .2s}
+.lecgrp[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.sub{overflow:hidden;transition:max-height .28s ease,opacity .2s;max-height:1200px}
+.sub.closed{max-height:0;opacity:0;margin-top:0;margin-bottom:0;visibility:hidden}
+.sub a{align-items:flex-start;line-height:1.35;color:var(--side-soft,rgba(255,255,255,.72))}
+.sub a:nth-child(odd){background:var(--side-stripe,rgba(255,255,255,.035))}
+.sub a:hover{color:var(--side-strong,#fff)}
+.sub a .n{flex:none;font-weight:700;color:var(--side-strong,rgba(255,255,255,.95));padding-top:1px}
+.sub a.on{color:#fff;font-weight:600}
+.sub a .dot{flex:none;margin-top:6px}
+@media (prefers-reduced-motion:reduce){.sub,.lecgrp .chev{transition:none}}
+/* lecture read-aloud (Mongolian text-to-speech) */
+.tts-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tts-bar .btn{padding:8px 13px}
+.tts-bar select{font:inherit;font-size:13px;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 8px;max-width:100%}
+.tts-opts{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:10px;font-size:13px;color:var(--muted)}
+.tts-opts label{display:flex;gap:6px;align-items:center}
+.tts-prog{height:5px;background:var(--surface-2);border-radius:9px;overflow:hidden;margin-top:12px}
+.tts-prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.tts-text{max-height:440px;overflow-y:auto;margin-top:12px;padding:4px 14px 4px 4px;border-top:1px solid var(--line)}
+.tts-text .tb{padding:6px 10px;border-radius:8px;margin:2px 0;cursor:pointer;border-left:3px solid transparent}
+.tts-text .tb:hover{background:var(--surface-2)}
+.tts-text .tb.h{font-weight:700;font-size:15.5px;margin-top:12px}
+.tts-text .tb.feq{display:flex;align-items:center;gap:10px;color:var(--fg);padding:8px 10px}
+.tts-text .tb.feq .mm{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;text-align:center}
+.tts-text math{font-family:"Cambria Math","STIX Two Math","Latin Modern Math",math;font-size:1.18em;color:var(--fg)}
+.tts-text .tb.feq .eqn{flex:none;font-family:"Cambria Math","Times New Roman",serif}
+.tts-text .tb.feq img{display:block;margin:0 auto;max-width:100%;height:auto;background:#fff;border-radius:6px;padding:4px}
+.tts-text sub,.tts-text sup{font-size:.72em;line-height:0}
+.tts-text .tb.feq.done{color:var(--fg)}
+.tts-text .tb.cap{font-size:13px;color:var(--muted);font-style:italic;text-align:center}
+.tts-text .tb.on{background:var(--accent-soft);border-left-color:var(--accent)}
+.tts-text .tb.done{color:var(--muted)}
 </style>
 
 <div class="app">
@@ -231,9 +283,55 @@ const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&g
 const pad=n=>String(n).padStart(2,"0");
 const today=()=>{const d=new Date();return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())};
 const hm=sec=>{sec=Math.round(sec||0);const h=Math.floor(sec/3600),m=Math.round((sec%3600)/60);return h?`${h} ц ${m} мин`:`${m} мин`};
-let teacherRows=null,teacherErr=null,teacherPw=null;
+let ROSTER=[];let teacherRows=null,teacherErr=null,teacherPw=null;
 let SID=store.get("sid",null);if(!SID){SID="s"+Math.random().toString(36).slice(2,10)+Date.now().toString(36);store.set("sid",SID)}
 let UNLOCK=false;
+/* ---------- өнгө (багш сонгоно; бүх оюутанд адил) ---------- */
+const THEMES={
+  blue:{name:"Цэнхэр",navy:"#0d2a5c",accent:"#1f63d8",hero:"linear-gradient(115deg,#0b2556 0%,#123a7d 55%,#c8662a 100%)"},
+  green:{name:"Ногоон",navy:"#0f3b2e",accent:"#1a8a5a",hero:"linear-gradient(115deg,#0c3326 0%,#16614a 55%,#c9a227 100%)"},
+  maroon:{name:"Хүрэн улаан",navy:"#4a1420",accent:"#b3263e",hero:"linear-gradient(115deg,#3d0f19 0%,#7a1f31 55%,#d98a2b 100%)"},
+  violet:{name:"Нил ягаан",navy:"#2b1a5a",accent:"#6a44d8",hero:"linear-gradient(115deg,#22134d 0%,#43288f 55%,#d0567a 100%)"},
+  teal:{name:"Номин",navy:"#0b3a46",accent:"#0f8a9c",hero:"linear-gradient(115deg,#082f3a 0%,#0f5f6f 55%,#e08a3c 100%)"},
+  graphite:{name:"Бараан саарал",navy:"#232a33",accent:"#d0661c",hero:"linear-gradient(115deg,#1b2129 0%,#38424f 55%,#d0661c 100%)"},
+  lblue:{name:"Цайвар цэнхэр",light:1,navy:"#eaf1fb",accent:"#1f63d8",hero:"linear-gradient(115deg,#2f6fcf 0%,#4a8ae0 55%,#e8954a 100%)"},
+  lgreen:{name:"Цайвар ногоон",light:1,navy:"#e9f5ef",accent:"#178452",hero:"linear-gradient(115deg,#1d7a52 0%,#3a9a6c 55%,#d4a52c 100%)"},
+  lviolet:{name:"Цайвар ягаан",light:1,navy:"#f1eefb",accent:"#6a44d8",hero:"linear-gradient(115deg,#5b3cc4 0%,#8461d8 55%,#d9668c 100%)"},
+  lsand:{name:"Цайвар шаргал",light:1,navy:"#f7f2e8",accent:"#b85a14",hero:"linear-gradient(115deg,#8a4a16 0%,#b8692a 55%,#d9a441 100%)"},
+  white:{name:"Цагаан",light:1,navy:"#ffffff",accent:"#0f6cbd",hero:"linear-gradient(115deg,#13406e 0%,#1d63a8 55%,#3aa0c9 100%)"}
+};
+const SIDE_LIGHT={"--side-fg":"#22304a","--side-muted":"#6a7891","--side-strong":"#111a2c","--side-soft":"#3c4a63","--side-hover":"rgba(15,30,60,.06)","--side-line":"rgba(15,30,60,.12)","--side-stripe":"rgba(15,30,60,.035)","--side-btn":"rgba(15,30,60,.06)","--side-btn-h":"rgba(15,30,60,.1)"};
+function applyTheme(t){
+  if(!t)return;const base=THEMES[t.id]||THEMES.blue;const acc=t.accent||base.accent;const r=document.documentElement.style;
+  r.setProperty("--navy",t.navy||base.navy);r.setProperty("--accent",acc);
+  r.setProperty("--accent-soft","color-mix(in srgb, "+acc+" 14%, var(--surface))");
+  r.setProperty("--hero",t.hero||base.hero);
+  Object.keys(SIDE_LIGHT).forEach(k=>{if(base.light)r.setProperty(k,SIDE_LIGHT[k]);else r.removeProperty(k)});
+  const sd=document.getElementById("side");if(sd)sd.style.borderRight=base.light?"1px solid var(--line)":"";
+  const lg=document.querySelector(".brand svg rect");if(lg)lg.setAttribute("fill",acc);
+}
+let THEME=store.get("theme",null);applyTheme(THEME);
+/* ---------- оюутны нэвтрэлт (зөвхөн жагсаалтад байгаа оюутан) ---------- */
+let AUTH=store.get("auth",null);
+async function apiGet(params){
+  if(!API_URL||API_URL.indexOf("http")!==0)throw new Error("noapi");
+  const r=await fetch(API_URL+"?"+new URLSearchParams(params).toString());return r.json();
+}
+async function loadSettings(){try{const j=await apiGet({action:"settings"});if(j.ok&&j.theme){THEME=j.theme;store.set("theme",THEME);applyTheme(THEME)}}catch(e){}}
+function viewLogin(){
+  return `<div class="login"><section class="hero"><span class="code">ХИЧЭЭЛ ${COURSE.code}</span><h1 style="font-size:24px">${COURSE.title}</h1><p style="margin:8px 0 0">Хичээлд бүртгэлтэй оюутан өөрийн кодоор нэвтэрнэ.</p></section>
+  <section class="card"><h2>Оюутан нэвтрэх</h2><form id="lgf" style="display:flex;flex-direction:column;gap:12px"><label class="field" for="lgc">Оюутны код<input id="lgc" autocomplete="username" placeholder="Жишээ: B252183024" required></label><label class="field" for="lgn">Овог нэр<input id="lgn" autocomplete="name" placeholder="Жишээ: Т.Эрдэнэсүх" required></label><button class="btn pri" type="submit">Нэвтрэх</button></form><div id="lgm"></div>
+  <p class="small muted" style="margin-top:12px">Кодоо оюутны үнэмлэх дээрх шиг (B…), нэрээ овгийн үсэгтэй бичнэ. Нэвтэрч чадахгүй бол багшид хандана уу.</p></section>
+  <p class="small" style="text-align:center"><a href="#teacher">Багш нэвтрэх</a></p></div>`}
+async function doLogin(e){
+  e.preventDefault();const code=document.getElementById("lgc").value.trim(),name=document.getElementById("lgn").value.trim();const m=document.getElementById("lgm");
+  m.innerHTML='<p class="small muted">Шалгаж байна…</p>';
+  try{const j=await apiGet({action:"login",code,name});
+    if(j.ok){AUTH={code:j.code,name:j.name,group:j.group||""};store.set("auth",AUTH);store.set("me",{name:AUTH.name,group:AUTH.group,code:AUTH.code});location.hash="home";render()}
+    else m.innerHTML=`<div class="status bad">${j.error==="not_found"?"Энэ код, нэрээр бүртгэл олдсонгүй. Код, нэрээ шалгаад дахин оруулна уу.":"Нэвтэрч чадсангүй."}</div>`}
+  catch(err){m.innerHTML='<div class="status bad">Сервертэй холбогдож чадсангүй. Интернэт холболтоо шалгана уу.</div>'}
+}
+function logout(){AUTH=null;store.set("auth",null);store.set("me",{name:"",group:"",code:""});store.set("results",{});store.set("final",null);store.set("study",{});location.hash="home";render()}
 
 const ic={home:'<svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H5v-9"/></svg>',calc:'<svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h2"/></svg>',lab:'<svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 002 3h10a2 2 0 002-3l-5-9V3"/></svg>',test:'<svg viewBox="0 0 24 24"><path d="M9 11l2 2 4-4"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>',me:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>',tbl:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>',star:'<svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>',lock:'<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>'};
 
@@ -268,12 +366,17 @@ document.addEventListener("visibilitychange",()=>{if(document.visibilityState===
 
 function nav(){
   const h=location.hash.slice(1)||"home";
+  if(!AUTH&&!UNLOCK){document.getElementById("nav").innerHTML=`<a href="#home" class="${h==="home"?"on":""}">${ic.me}Оюутан нэвтрэх</a><div class="grp">Багш</div><a href="#teacher" class="${h.startsWith("teacher")?"on":""}">${ic.lock}Багш нэвтрэх</a>`;return}
   const a=(id,label,icon)=>`<a href="#${id}" class="${h===id?"on":""}">${ic[icon]}${label}</a>`;
-  let s=a("home","Нүүр","home")+'<div class="grp">Лекц</div><div class="sub">'+D.lec.map(l=>`<a href="#lecture-${l.n}" class="${h==="lecture-"+l.n||h==="test-"+l.n?"on":""}"><span class="n">${pad(l.n)}</span>${esc(short(l.t))}${bestOf(l.n)!=null?'<span class="dot"></span>':""}</a>`).join("")+'</div>';
+  const lm=/^(lecture|test)-(\d+)$/.exec(h);const open=!!store.get("lecOpen",false);
+  let s=a("home","Нүүр","home")+`<button type="button" class="lecgrp" id="lecTg" aria-expanded="${open}" aria-controls="lecList">Лекц <span class="cnt">12</span>${!open&&lm?`<span class="cur">· ${pad(lm[2])}</span>`:""}<svg class="chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><div class="sub${open?"":" closed"}" id="lecList">`+D.lec.map(l=>`<a href="#lecture-${l.n}" class="${h==="lecture-"+l.n||h==="test-"+l.n?"on":""}"><span class="n">${pad(l.n)}</span>${esc(short(l.t))}${bestOf(l.n)!=null?'<span class="dot"></span>':""}</a>`).join("")+'</div>';
   s+='<div class="grp">Дадлага</div>'+a("seminar","Семинар","calc")+a("lab","Лабораторийн ажил","lab");
   s+='<div class="grp">Шалгалт</div>'+a("tests","Лекцийн тестүүд","test")+a("final","Улирлын шалгалт (30 оноо)","star")+a("my","Миний оноо","me");
-  s+='<div class="grp">Багш</div>'+a("teacher","Оюутны дүн","lock");
+  s+='<div class="grp">Багш</div>'+a("teacher","Оюутны дүн","lock")+(UNLOCK?a("settings","Тохиргоо","tbl"):"");
+  if(AUTH)s+=`<div class="userchip">${ic.me}<span>${esc(AUTH.name)}<br><span style="opacity:.7">${esc(AUTH.code)}</span></span><button id="lgout" type="button">Гарах</button></div>`;
   document.getElementById("nav").innerHTML=s;
+  const lo=document.getElementById("lgout");if(lo)lo.onclick=logout;
+  const tg=document.getElementById("lecTg");if(tg)tg.onclick=()=>{const o=!store.get("lecOpen",false);store.set("lecOpen",o);tg.setAttribute("aria-expanded",o);document.getElementById("lecList").classList.toggle("closed",!o);const c=tg.querySelector(".cur");if(c)c.hidden=o};
 }
 function short(t){const s=t.split(/[.:]/)[0];return s.length>36?s.slice(0,34)+"…":s}
 
@@ -282,7 +385,7 @@ const towers=`<svg class="towers" viewBox="0 0 600 260" preserveAspectRatio="xMa
 function lessonCard(l){const b=bestOf(l.n);return `<a class="lesson" href="#lecture-${l.n}"><span class="num">${l.n}</span><span><b>${esc(l.t)}</b><span class="pill ${b!=null?"ok":"blue"}">${b!=null?"Тест: "+b+"/10":"PDF · 12 х. · 10 асуулт"}</span></span></a>`}
 function infoCard(){return `<section class="card info"><h2>Хичээлийн мэдээлэл</h2><dl><dt>Код</dt><dd>${COURSE.code}</dd><dt>Кредит</dt><dd>${COURSE.credit}</dd><dt>Багш</dt><dd>Тэнхимийн эрхлэгч, доктор (Ph.D), дэд профессор Ш.Гантөмөр</dd><dt>Тэнхим</dt><dd>Цахилгааны инженерчлэлийн тэнхим, ЭХИС</dd><dt>Өрөө</dt><dd>2-р байр, 515</dd></dl></section>
 <section class="card"><h2>Үнэлгээ</h2><ol class="stepl"><li><span>1</span>Лекц бүрийн тест — 10 асуулт, давтан өгч болно.</li><li><span>2</span>Улирлын шалгалт — 30 асуулт, 30 оноо, ${FINAL_MIN} минут, нэг удаа.</li><li><span>3</span>Хичээл үзсэн хугацаа автоматаар бүртгэгдэнэ.</li></ol></section>`}
-function regCard(){const m=me();if(m.name)return "";return `<section class="card"><h2>Бүртгүүлэх</h2><p class="small muted">Хичээл үзсэн хугацаа ба оноо таны нэр дээр бүртгэгдэнэ.</p><form id="regf" class="formrow"><label class="field" for="rnm">Овог нэр<input id="rnm" placeholder="Жишээ: Б.Батболд" autocomplete="name"></label><label class="field" for="rgr">Анги, бүлэг<input id="rgr" placeholder="Жишээ: ЦЭХ-3"></label><label class="field" for="rcd">Оюутны код<input id="rcd" placeholder="Жишээ: B221234567"></label><button class="btn pri" type="submit">Хадгалах</button></form></section>`}
+function regCard(){const m=me();if(AUTH||m.name)return "";return `<section class="card"><h2>Бүртгүүлэх</h2><p class="small muted">Хичээл үзсэн хугацаа ба оноо таны нэр дээр бүртгэгдэнэ.</p><form id="regf" class="formrow"><label class="field" for="rnm">Овог нэр<input id="rnm" placeholder="Жишээ: Б.Батболд" autocomplete="name"></label><label class="field" for="rgr">Анги, бүлэг<input id="rgr" placeholder="Жишээ: ЦЭХ-3"></label><label class="field" for="rcd">Оюутны код<input id="rcd" placeholder="Жишээ: B221234567"></label><button class="btn pri" type="submit">Хадгалах</button></form></section>`}
 
 function viewHome(){
   const done=Object.keys(local()).length,pct=Math.round(done/12*100);
@@ -301,6 +404,7 @@ function viewLecture(n){
   const l=D.lec[n-1];if(!l)return viewHome();noteLecture(n);const b=bestOf(n);
   return `<div class="layout"><div class="col"><div><div class="crumb"><a href="#home">Нүүр</a> / Лекц ${n}</div><h1 style="font-size:24px">Лекц ${n}. ${esc(l.t)}</h1></div>
   <section class="card"><h2>Лекцийн зорилго</h2><p class="prose">${esc(l.goal)}</p><div class="kw">${l.kw.map(k=>`<span>${esc(k)}</span>`).join("")}</div></section>
+  ${TTS.card(n)}
   <section class="card"><h2>Лекцийн материал</h2><p class="muted small">Word-ын 12 хуудас хэмжээтэй, жишээ бодлого, хяналтын асуулт, бие даалтын даалгавар, лабораторийн стендтэй холбосон хэсэгтэй.</p><div class="formrow">${pdfButtons("lec"+pad(n)+".pdf","Лекц "+n)}</div></section>
   <section class="card"><h2>Тест</h2><p class="small">10 асуулт · нэг зөв хариулт · хариулсны дараа тайлбар харагдана. ${b!=null?`Таны хамгийн сайн дүн: <b>${b}/10</b>.`:""}</p><a class="btn pri" href="#test-${n}">Тест өгөх</a></section>
   <div class="pager">${n>1?`<a class="btn ghost" href="#lecture-${n-1}">← Лекц ${n-1}</a>`:"<span></span>"}${n<12?`<a class="btn ghost" href="#lecture-${n+1}">Лекц ${n+1} →</a>`:""}</div>
@@ -320,7 +424,7 @@ function viewTests(){return `<div class="layout full"><div class="col"><h1 style
 /* ---------- quiz engine (lecture test + final exam) ---------- */
 let cur=null,timerId=null;
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function studentFields(){const m=me();return `<section class="card"><h2>Оюутны мэдээлэл</h2><div class="formrow"><label class="field" for="nm">Овог нэр<input id="nm" value="${esc(m.name)}" placeholder="Жишээ: Б.Батболд" autocomplete="name"></label><label class="field" for="gr">Анги, бүлэг<input id="gr" value="${esc(m.group)}" placeholder="Жишээ: ЦЭХ-3"></label><label class="field" for="cd">Оюутны код<input id="cd" value="${esc(m.code||"")}" placeholder="Жишээ: B221234567"></label></div></section>`}
+function studentFields(){const m=me();if(AUTH)return `<section class="card"><h2>Оюутан</h2><p>${esc(AUTH.name)} · ${esc(AUTH.code)} · ${esc(AUTH.group)}</p><input type="hidden" id="nm" value="${esc(AUTH.name)}"><input type="hidden" id="gr" value="${esc(AUTH.group||"-")}"><input type="hidden" id="cd" value="${esc(AUTH.code)}"></section>`;return `<section class="card"><h2>Оюутны мэдээлэл</h2><div class="formrow"><label class="field" for="nm">Овог нэр<input id="nm" value="${esc(m.name)}" placeholder="Жишээ: Б.Батболд" autocomplete="name"></label><label class="field" for="gr">Анги, бүлэг<input id="gr" value="${esc(m.group)}" placeholder="Жишээ: ЦЭХ-3"></label><label class="field" for="cd">Оюутны код<input id="cd" value="${esc(m.code||"")}" placeholder="Жишээ: B221234567"></label></div></section>`}
 function qHtml(qs){return qs.map((q,i)=>`<div class="q" id="q${i}"><p><span class="qn">${i+1}.</span>${esc(q.q[0])}${q.lec?` <span class="pill blue">Лекц ${q.lec}</span>`:""}</p>${q.ord.map(k=>`<label><input type="radio" name="a${i}" value="${k}" id="a${i}_${k}"> <span>${esc(q.q[1][k])}</span></label>`).join("")}<div class="why">${esc(q.q[3])}</div></div>`).join("")}
 function viewTest(n){
   const qs=D.tests[n];if(!qs)return viewTests();noteLecture(n);
@@ -391,9 +495,25 @@ async function loadTeacher(pw){
   teacherErr=null;
   try{const r=await fetch(API_URL+"?action=teacher&pw="+encodeURIComponent(pw));const j=await r.json();
     if(!j.ok){teacherRows=null;return j.error==="bad_pw"?"bad":"err"}
-    teacherRows=j.rows;teacherPw=pw;return "ok"}
+    teacherRows=j.rows;teacherPw=pw;ROSTER=j.roster||[];if(j.theme){THEME=j.theme;store.set("theme",THEME);applyTheme(THEME)}return "ok"}
   catch(e){teacherErr="Сервертэй холбогдож чадсангүй.";return "err"}
 }
+
+function viewSettings(){
+  if(!UNLOCK){location.hash="teacher";return viewTeacher()}
+  const cur=(THEME&&THEME.id)||"blue";
+  return `<div class="layout full"><div class="col"><h1 style="font-size:24px">Тохиргоо</h1>
+  <section class="card"><h2>Вэбийн үндсэн өнгө</h2><p class="small muted">Сонгосон өнгө бүх оюутанд адилхан харагдана.</p>
+  ${[["Бараан цэс",0],["Цайвар цэс",1]].map(([g,l])=>`<div class="swgrp">${g}</div><div class="swatches">${Object.entries(THEMES).filter(([k,t])=>!!t.light===!!l).map(([k,t])=>`<button type="button" class="sw ${k===cur?"on":""}" data-th="${k}"><i style="background:${t.hero}"><b style="background:${t.navy}"></b></i><span>${t.name}</span></button>`).join("")}</div>`).join("")}
+  <div class="formrow"><label class="field" for="accIn" style="flex:0 0 auto">Өөр товчны өнгө<input type="color" id="accIn" value="${(THEME&&THEME.accent)||THEMES[cur].accent}" style="width:70px;height:38px;padding:2px"></label><button class="btn pri" id="thSave">Өнгийг хадгалах</button></div><div id="thMsg"></div></section>
+  <section class="card"><h2>Оюутны жагсаалт (${ROSTER.length})</h2><p class="small muted">Зөвхөн энэ жагсаалтад байгаа оюутан код, нэрээрээ нэвтэрнэ. Мөр бүрт: <b>код, овог нэр, сургууль/анги</b> (Excel-ээс хуулж тавьж болно — таслал эсвэл Tab-аар тусгаарлана).</p>
+  <textarea id="rosterIn" class="roster" spellcheck="false">${esc(ROSTER.map(r=>[r.code,r.name,r.group].join(", ")).join("\n"))}</textarea>
+  <div class="formrow" style="margin-top:10px"><button class="btn pri" id="rsSave">Жагсаалт хадгалах</button></div><div id="rsMsg"></div></section></div></div>`}
+function parseRoster(t){return t.split(/\r?\n/).map(l=>l.trim()).filter(Boolean).map(l=>{const p=l.split(/\t|,|;/).map(x=>x.trim());return {code:p[0]||"",name:p[1]||"",group:p[2]||""}}).filter(r=>/^[A-Za-zА-Яа-я]?\d{5,}$/.test(r.code)&&r.name)}
+async function teacherPost(body,msgId){const m=document.getElementById(msgId);m.innerHTML='<p class="small muted">Хадгалж байна…</p>';
+  try{const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(Object.assign({pw:teacherPw},body))});const j=await r.json();
+    if(j.ok){m.innerHTML='<div class="status ok">Хадгалагдлаа.</div>';return j}m.innerHTML=`<div class="status bad">${j.error==="bad_pw"?"Нууц үг буруу.":"Хадгалж чадсангүй ("+esc(j.error)+")."}</div>`}
+  catch(e){m.innerHTML='<div class="status bad">Сервертэй холбогдож чадсангүй.</div>'}return null}
 function rerenderT(){if((location.hash||"").startsWith("#teacher"))render()}
 function studyTotal(r){return Object.values(r.study||{}).reduce((a,x)=>a+(x.sec||0),0)}
 function testsTotal(r){return D.lec.reduce((a,l)=>a+((r["t"+pad(l.n)]||{}).best||0),0)}
@@ -442,19 +562,192 @@ function csv(){
 function save(filename,data){const u=URL.createObjectURL(new Blob([data],{type:filename.endsWith(".csv")?"text/csv;charset=utf-8":"text/html;charset=utf-8"}));const a=document.createElement("a");a.href=u;a.download=filename;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},1000)}
 function printHtml(html){const w=window.open("","_blank");if(!w){save("EEA306_hevleh.html",html);return}w.document.open();w.document.write(html);w.document.close();setTimeout(()=>{w.focus();w.print()},400)}
 
+/* ---------- лекцийг монголоор чангаар унших (хөтчийн Web Speech API) ----------
+   Лекцийн бичвэр tts/lecNN.json-д (PDF-ээс гаргасан: гарчиг h, догол мөр p, томьёо eq, зураг/хүснэгтийн тайлбар cap).
+   Монгол дуу хоолой (mn-MN) — Microsoft Edge хөтчийн «Microsoft Bataa / Yesui Online (Natural) — Mongolian».
+   Монгол дуу хоолойгүй хөтчид бусад дуу хоолойг сонгож болно (кирилл бичгийг ойролцоо уншина). */
+const ART_URL="https://gantumur2020-spec.github.io/EEA-306/";
+const TTS=(()=>{
+  const syn=("speechSynthesis" in window)?window.speechSynthesis:null;
+  let lec=0,blocks=null,idx=0,parts=[],pi=0,playing=false,paused=false,voices=[],gen=0;
+  const opt=Object.assign({rate:1,voice:"",eq:false,gender:"m"},store.get("tts",{}));
+  const saveOpt=()=>store.set("tts",opt);
+  const posKey=n=>"ttspos"+n;
+  function loadVoices(){if(!syn)return;voices=syn.getVoices().slice().sort((a,b)=>(b.lang.toLowerCase().startsWith("mn")-a.lang.toLowerCase().startsWith("mn"))||a.name.localeCompare(b.name));fillVoices()}
+  if(syn){loadVoices();syn.addEventListener?syn.addEventListener("voiceschanged",loadVoices):(syn.onvoiceschanged=loadVoices)}
+  let vWait=true;setTimeout(()=>{vWait=false;note()},3000);
+  const mnVoices=()=>voices.filter(v=>v.lang.toLowerCase().startsWith("mn"));
+  // дуу хоолойн хүйс: Bataa — эрэгтэй, Yesui — эмэгтэй; бусад хэлний түгээмэл нэрсээр
+  const FEM=/yesui|female|эмэгтэй|zira|aria|jenny|michelle|sonia|libby|natasha|svetlana|dariya|irina|ekaterina|milena|katya|alena|samantha|victoria|karen|moira|tessa|fiona|susan|hazel|heera|google.*(female|uk english female)|салтанат|aigul/i;
+  const MAL=/bataa|male|эрэгтэй|david|mark|guy|ryan|thomas|george|dmitry|pavel|maxim|yuri|alex|daniel|fred|oliver|james|ravi|google.*male/i;
+  const genderOf=v=>!v?"":(FEM.test(v.name)?"f":(MAL.test(v.name)?"m":""));
+  function voiceFor(g){const mn=mnVoices();return mn.find(v=>genderOf(v)===g)||null}
+  function pickVoice(){if(!voices.length)return null;
+    const byName=voices.find(v=>v.name===opt.voice);if(byName&&(byName.lang.toLowerCase().startsWith("mn")||!mnVoices().length))return byName;
+    return voiceFor(opt.gender)||mnVoices()[0]||voices.find(v=>/^ru/i.test(v.lang)&&genderOf(v)===opt.gender)||voices.find(v=>/^ru/i.test(v.lang))||null}
+  // сонгосон дуу хоолой хүссэн хүйсийнх биш бол өнгийг (pitch) өөрчилж ойртуулна
+  function pitchFor(v){const g=genderOf(v);if(!opt.gender||g===opt.gender)return 1;return opt.gender==="f"?1.35:0.75}
+  function setGender(g){opt.gender=g;const v=voiceFor(g)||voices.find(x=>genderOf(x)===g&&/^ru/i.test(x.lang))||null;
+    opt.voice=v?v.name:(pickVoice()||{}).name||"";saveOpt();fillVoices();paintGender();if(playing&&!paused)startAt(idx)}
+  function paintGender(){["m","f"].forEach(g=>{const b=document.getElementById("ttsG"+g);if(b){b.classList.toggle("on",opt.gender===g);b.setAttribute("aria-pressed",opt.gender===g)}});
+    const h=document.getElementById("ttsGnote");if(!h)return;const v=pickVoice();
+    if(!voices.length){h.textContent="";return}
+    h.textContent=v&&genderOf(v)===opt.gender?"":(opt.gender==="f"?"Эмэгтэй дуу хоолой олдсонгүй — өнгийг өндөрсгөж уншина.":"Эрэгтэй дуу хоолой олдсонгүй — өнгийг намсгаж уншина.")}
+  function fillVoices(){const s=document.getElementById("ttsVoice");if(!s)return;const cur=pickVoice();
+    s.innerHTML=voices.length?voices.map(v=>`<option value="${esc(v.name)}"${cur&&v.name===cur.name?" selected":""}>${v.lang.toLowerCase().startsWith("mn")?"★ ":""}${esc(v.name)} (${esc(v.lang)})</option>`).join(""):'<option value="">Дуу хоолой ачаалж байна…</option>';
+    if(!cur&&voices.length){const fb=voices.find(v=>/^ru/i.test(v.lang))||voices[0];s.value=fb.name}
+    note();paintGender()}
+  function note(){const el=document.getElementById("ttsNote");if(!el)return;
+    if(!syn){el.className="status bad";el.textContent="Энэ хөтөч дуу гаргах (Web Speech) боломжгүй. Microsoft Edge эсвэл Chrome-ийн шинэ хувилбараар нээнэ үү.";return}
+    if(!voices.length){el.className="status warn";el.innerHTML=vWait?"Дуу хоолойн жагсаалт ачаалж байна…":"Энэ хөтчид дуу хоолой олдсонгүй. Хуудсыг <b>Microsoft Edge</b> хөтчөөр нээвэл «Microsoft Bataa / Yesui — Mongolian» дуу хоолойгоор уншина.";return}
+    if(mnVoices().length){el.className="status ok";el.innerHTML="Монгол дуу хоолой олдлоо: <b>"+esc(mnVoices().map(v=>v.name.replace(/^Microsoft\s*/,"").replace(/\s*Online.*$/,"")+(genderOf(v)==="f"?" (эмэгтэй)":genderOf(v)==="m"?" (эрэгтэй)":"")).join(", "))+"</b>.";return}
+    const ru=voices.find(v=>/^ru/i.test(v.lang));
+    el.className="status bad";el.innerHTML="<b>Энэ цонхонд (хөтчид) монгол дуу хоолой алга</b> — англи дуу хоолой монгол бичвэрийг уншиж чадахгүй. "+
+      "Хуудсыг <b>Microsoft Edge</b> хөтчөөр нээнэ үү: "+
+      "<a href=\"microsoft-edge:"+ART_URL+"\" target=\"_blank\" rel=\"noopener\">Edge-ээр нээх</a> эсвэл энэ холбоосыг Edge-д хуулж нээнэ: <span class=\"codebox\" style=\"font-size:12px;letter-spacing:0;user-select:all\">"+ART_URL+"</span>. "+
+      "Edge дээр «Microsoft Bataa» (эрэгтэй), «Microsoft Yesui» (эмэгтэй) монгол дуу хоолой автоматаар сонгогдоно."+(ru?" Түр зуур орос дуу хоолой («"+esc(ru.name)+"») кирилл бичгийг ойролцоогоор уншина.":"")}
+
+  /* --- бичвэрийг уншихад бэлтгэх: тэмдэгт, нэгж, латин үсэг --- */
+  const GR={"Δ":"дельта ","δ":"дельта ","θ":"тэта ","φ":"фи ","λ":"ламбда ","ω":"омега ","π":"пи ","ρ":"ро ","α":"альфа ","β":"бета ","γ":"гамма ","μ":"мю ","σ":"сигма ","τ":"тау ","η":"эта ","ε":"эпсилон ","ψ":"пси ","Σ":" нийлбэр ","∑":" нийлбэр ","√":" язгуур ","∛":" куб язгуур ","∂":" тухайн уламжлал ","∞":" хязгааргүй ","≈":" ойролцоогоор ","≤":" бага буюу тэнцүү ","≥":" их буюу тэнцүү ","≠":" тэнцүү биш ","→":", ","·":" ","×":" үржих ","±":" нэмэх хасах ","∠":" өнцөг ","′":" штрих","″":" хос штрих","…":", ","—":", ","̇":"","∙":" "};
+  const SUP={"⁰":"0","¹":"1","²":"2","³":"3","⁴":"4","⁵":"5","⁶":"6","⁷":"7","⁸":"8","⁹":"9","⁻":"хасах ","⁺":""};
+  const UNITS=[["кВт·ц","киловатт цаг"],["МВт·ц","мегаватт цаг"],["Ом·мм²/м","ом квадрат миллиметр метр тутамд"],["Ом/км","ом километр тутамд"],["См/км","сименс километр тутамд"],["Гн/м","генри метр тутамд"],["Гн/км","генри километр тутамд"],["мкСм","микросименс"],["МВА","мегавольт ампер"],["кВА","киловольт ампер"],["Мвар","мегавар"],["квар","киловар"],["МВт","мегаватт"],["кВт","киловатт"],["кВ","киловольт"],["Гц","герц"],["мм²","квадрат миллиметр"],["км","километр"],["Ом","ом"],["о.н.","онцгой нэгж"],["о.н","онцгой нэгж"],["°C","градус"],["%","хувь"]];
+  const LAT={a:"а",b:"бэ",c:"цэ",d:"дэ",e:"е",f:"эф",g:"гэ",h:"аш",i:"и",j:"жи",k:"ка",l:"эл",m:"эм",n:"эн",o:"о",p:"пэ",q:"ку",r:"эр",s:"эс",t:"тэ",u:"у",v:"вэ",w:"вэ",x:"икс",y:"игрек",z:"зэт"};
+  // нэгж + дагавар: «кВ-д» → «киловольтод», «%-иар» → «хувиар»
+  function joinSuf(w,suf){if(/ь$/.test(w)&&/^и/.test(suf))return w.slice(0,-1)+suf;if(/^[аэоөуүияыеё]/.test(suf))return w+suf;
+    const v=(w.match(/[аэоөуүи]/g)||["а"]).pop();return w+({"у":"о","и":"э","ү":"ө"}[v]||v)+suf}
+  const reEsc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+  function speakable(s){
+    s=s.replace(/(\d)([⁻⁺]?[⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g,(m,a,b)=>a+" зэрэг "+[...b].map(c=>SUP[c]).join("")+" ");
+    s=s.replace(/(\d)\s*[·×]\s*(\d)/g,"$1 үржих $2");
+    for(const [u,w] of UNITS)s=s.replace(new RegExp("(?<![\\p{L}])"+reEsc(u)+"(?:-([\\p{L}]+))?(?![\\p{L}])","gu"),(m,suf)=>" "+(suf?joinSuf(w,suf):w)+" ");
+    s=s.replace(/\//g," хуваах ");
+    s=s.replace(/²/g," квадрат").replace(/³/g," куб").replace(/[⁰¹⁴⁵⁶⁷⁸⁹⁻]/g,c=>SUP[c]);
+    s=s.replace(/(\d)\s*[–-]\s*(\d)/g,"$1, $2");
+    s=s.replace(/\s=\s/g," тэнцүү ").replace(/\s\+\s/g," нэмэх ").replace(/\s[−-]\s/g," хасах ").replace(/(^|[\s(])−(\d)/g,"$1хасах $2").replace(/\s\/\s/g," хуваах ");
+    s=s.replace(/[ΔδθφλωπραβγμστηεψΣ∑√∛∂∞≈≤≥≠→·×±∠′″…—̇∙]/g,c=>GR[c]??c);
+    s=s.replace(/(?<![\p{L}])([A-Za-z]{1,3})(?=[\d\s,.;:)(\]/=–-]|$)/gu,(m,w)=>/^(PV|PQ|DC|AC|LU|IEEE|EMS|FDLF|SOR|ZIP|PTDF|LODF|BIBC|DLF|FACTS|STATCOM|SVC|HVDC)$/.test(w)?[...w].map(c=>LAT[c.toLowerCase()]).join(" ")+" ":[...w].map(c=>LAT[c.toLowerCase()]||c).join(" ")+" ");
+    return s.replace(/\s+/g," ").trim();
+  }
+  function blockText(b){
+    if(b.t==="eq"){if(opt.eq)return "Томьёо "+(b.n?b.n+". ":"")+speakable(b.s.replace(/\(\d+\.\d+[а-я]?\)\s*$/,""));return b.n?"Томьёо "+b.n+".":""}
+    if(b.t==="cap")return speakable(b.s);
+    return speakable(b.s)+(b.t==="h"?".":"");
+  }
+  function split(s){ // Chrome урт өгүүлбэрийг таслах тул ~220 тэмдэгтээр хуваана
+    const out=[];(s.match(/[^.!?;:]+[.!?;:]*\s*/g)||[s]).forEach(x=>{x=x.trim();if(!x)return;while(x.length>220){let k=x.lastIndexOf(",",220);if(k<80)k=x.lastIndexOf(" ",220);if(k<40)k=220;out.push(x.slice(0,k+1));x=x.slice(k+1).trim()}if(x)out.push(x)});return out}
+
+  async function load(n){
+    if(lec===n&&blocks)return blocks;
+    let data=null;
+    try{const r=await fetch("tts/lec"+pad(n)+".json");if(r.ok)data=await r.json()}catch(e){}
+    if(!data)data=await new Promise((ok,bad)=>{ /* компьютер дээрээс (file://) нээсэн үед fetch ажиллахгүй тул .js хувилбарыг ачаална */
+      window.TTS_DATA=window.TTS_DATA||{};if(window.TTS_DATA[n])return ok(window.TTS_DATA[n]);
+      const sc=document.createElement("script");sc.src="tts/lec"+pad(n)+".js";sc.onload=()=>window.TTS_DATA[n]?ok(window.TTS_DATA[n]):bad(new Error("tts"));sc.onerror=()=>bad(new Error("tts"));document.head.appendChild(sc)});
+    blocks=data;lec=n;idx=Math.min(+(store.get(posKey(n),0))||0,blocks.length-1);return blocks}
+  function paint(){
+    const box=document.getElementById("ttsText");if(!box||!blocks)return;
+    box.querySelectorAll(".tb").forEach((e,i)=>{e.classList.toggle("on",i===idx&&(playing||paused));e.classList.toggle("done",i<idx)});
+    const pr=document.getElementById("ttsProg");if(pr)pr.style.width=(blocks.length?Math.round(idx/blocks.length*100):0)+"%";
+    const st=document.getElementById("ttsPos");if(st)st.textContent=`${Math.min(idx+1,blocks.length)} / ${blocks.length}`;
+    const bp=document.getElementById("ttsPlay");if(bp)bp.innerHTML=playing&&!paused?"⏸ Түр зогсоох":(paused?"▶ Үргэлжлүүлэх":"▶ Сонсох");
+    const on=box.querySelector(".tb.on");if(on&&(playing||paused)){const t=on.offsetTop-box.offsetTop;if(t<box.scrollTop+20||t>box.scrollTop+box.clientHeight-60)box.scrollTo({top:Math.max(0,t-60),behavior:"smooth"})}
+  }
+  function speakNext(){
+    if(!playing||!blocks)return;
+    if(pi>=parts.length){
+      idx++;store.set(posKey(lec),idx);
+      if(idx>=blocks.length){playing=false;idx=0;store.set(posKey(lec),0);paint();const el=document.getElementById("ttsNote");if(el){el.className="status ok";el.textContent="Лекцийг бүтэн уншиж дууслаа."}return}
+      parts=split(blockText(blocks[idx]));pi=0;paint();
+      if(!parts.length){speakNext();return}
+    }
+    const my=gen;const u=new SpeechSynthesisUtterance(parts[pi]);
+    const v=pickVoice()||voices.find(x=>x.name===(document.getElementById("ttsVoice")||{}).value);
+    if(v){u.voice=v;u.lang=v.lang}else u.lang="mn-MN";
+    u.rate=opt.rate;u.pitch=pitchFor(v);
+    u.onend=()=>{if(my!==gen)return;pi++;setTimeout(speakNext,blocks[idx]&&blocks[idx].t==="h"&&pi>=parts.length?350:40)};
+    u.onerror=e=>{if(my!==gen||e.error==="interrupted"||e.error==="canceled")return;
+      playing=false;paused=false;paint();const el=document.getElementById("ttsNote");
+      if(el){el.className="status bad";el.textContent="Дуу гаргаж чадсангүй ("+(e.error||"алдаа")+"). Өөр дуу хоолой сонгох, эсвэл хуудсыг Microsoft Edge хөтчөөр нээж үзнэ үү."}};
+    syn.speak(u);
+  }
+  function startAt(i){
+    if(!syn||!blocks)return;gen++;syn.cancel();
+    idx=Math.max(0,Math.min(i,blocks.length-1));store.set(posKey(lec),idx);
+    parts=split(blockText(blocks[idx]));pi=0;playing=true;paused=false;paint();
+    if(!parts.length){pi=0;parts=[];speakNext();return}
+    setTimeout(speakNext,60);
+  }
+  function stop(){if(syn){gen++;syn.cancel()}playing=false;paused=false;paint()}
+  function toggle(){
+    if(!syn)return;
+    if(playing&&!paused){syn.pause();paused=true;paint();
+      // зарим хөтөч (Android Chrome) pause дэмждэггүй — цуцалж, тухайн догол мөрөөс үргэлжлүүлнэ
+      setTimeout(()=>{if(paused&&syn.speaking&&!syn.paused){gen++;syn.cancel()}},300);return}
+    if(paused){paused=false;if(syn.paused&&syn.speaking){syn.resume();paint()}else startAt(idx);return}
+    startAt(idx);
+  }
+  async function mount(n){
+    const box=document.getElementById("ttsText");if(!box)return;
+    try{await load(n)}catch(e){box.innerHTML='<p class="muted small">Лекцийн бичвэрийг ачаалж чадсангүй.</p>';return}
+    if(lec!==n)return;
+    // h — PDF-ээс гаргасан, зөвхөн <sub>/<sup> тэмдэгтэй, бусдыг escape хийсэн бичвэр
+    const safe=h=>String(h).replace(/<(?!\/?(sub|sup)>)/g,"&lt;");
+    // томьёо: Word-ын тэгшитгэлийн адил MathML (Cambria Math); матрицтай томьёо — PDF-ийн зураг
+    const eqHtml=b=>b.img?`<div class="mm"><img src="${esc(b.img)}" alt="Томьёо ${esc(b.n||"")}" loading="lazy" style="width:${+b.iw||480}px"></div>`
+      :(b.m?`<div class="mm">${b.m}</div>${b.n?`<span class="eqn">(${esc(b.n)})</span>`:""}`:`<div class="mm">${safe(b.h||esc(b.s))}</div>`);
+    box.innerHTML=blocks.map((b,i)=>`<div class="tb ${b.t==="eq"?"feq":b.t}" data-i="${i}">${b.t==="eq"?eqHtml(b):(b.h!=null?safe(b.h):esc(b.s))}</div>`).join("");
+    box.onclick=e=>{const t=e.target.closest(".tb");if(t)startAt(+t.dataset.i)};
+    document.getElementById("ttsPlay").onclick=toggle;
+    document.getElementById("ttsStop").onclick=()=>{stop();idx=0;store.set(posKey(lec),0);paint()};
+    document.getElementById("ttsPrev").onclick=()=>startAt(idx-1);
+    document.getElementById("ttsNext").onclick=()=>startAt(idx+1);
+    const rs=document.getElementById("ttsRate");rs.value=String(opt.rate);rs.onchange=()=>{opt.rate=+rs.value;saveOpt();if(playing&&!paused)startAt(idx)};
+    const vs=document.getElementById("ttsVoice");vs.onchange=()=>{opt.voice=vs.value;const g=genderOf(voices.find(x=>x.name===vs.value));if(g)opt.gender=g;saveOpt();note();paintGender();if(playing&&!paused)startAt(idx)};
+    document.getElementById("ttsGm").onclick=()=>setGender("m");
+    document.getElementById("ttsGf").onclick=()=>setGender("f");
+    const eq=document.getElementById("ttsEq");eq.checked=!!opt.eq;eq.onchange=()=>{opt.eq=eq.checked;saveOpt()};
+    fillVoices();paintGender();paint();
+  }
+  function card(n){
+    return `<section class="card"><h2>🔊 Лекцийг сонсох (монголоор)</h2>
+    <p class="muted small" style="margin:0 0 10px">Лекцийн бичвэрийг хөтчийн дуу гаргагч уншина. Догол мөр дээр дарвал тэндээс уншина; хаана хүртэл сонссоныг хадгална.</p>
+    <div class="tts-bar"><button class="btn pri" id="ttsPlay">▶ Сонсох</button><button class="btn ghost" id="ttsPrev" title="Өмнөх догол мөр">⏮</button><button class="btn ghost" id="ttsNext" title="Дараагийн догол мөр">⏭</button><button class="btn ghost" id="ttsStop" title="Зогсоож эхэнд буцаах">⏹</button><span class="small muted" id="ttsPos"></span></div>
+    <div class="tts-opts"><span class="opt" role="group" aria-label="Дуу хоолой"><button type="button" id="ttsGm" title="Microsoft Bataa — эрэгтэй">👨 Эрэгтэй</button><button type="button" id="ttsGf" title="Microsoft Yesui — эмэгтэй">👩 Эмэгтэй</button></span><span id="ttsGnote" class="small"></span></div>
+    <div class="tts-opts"><label>Хурд <select id="ttsRate"><option value="0.75">0.75×</option><option value="0.9">0.9×</option><option value="1">1×</option><option value="1.15">1.15×</option><option value="1.3">1.3×</option><option value="1.5">1.5×</option></select></label>
+    <label style="flex:1 1 260px;min-width:0">Бүх дуу хоолой <select id="ttsVoice" style="flex:1;min-width:0"></select></label>
+    <label><input type="checkbox" id="ttsEq"> Томьёог чангаар унших</label></div>
+    <div id="ttsNote" class="status warn" style="margin-top:10px">Дуу хоолой ачаалж байна…</div>
+    <div class="tts-prog"><i id="ttsProg"></i></div>
+    <div class="tts-text" id="ttsText"><p class="muted small">Ачаалж байна…</p></div></section>`;
+  }
+  function onRoute(){const h=location.hash.slice(1);const m=/^lecture-(\d+)$/.exec(h);
+    if(!m||+m[1]!==lec){if(playing||paused)stop();if(m){blocks=null;lec=0}}
+    if(m)setTimeout(()=>mount(+m[1]),0)}
+  addEventListener("pagehide",()=>{if(syn)syn.cancel()});
+  return {card,onRoute,stop};
+})();
+
 /* ---------- router ---------- */
 function render(){
   const h=location.hash.slice(1)||"home";let html;
-  if(h.startsWith("lecture-"))html=viewLecture(+h.split("-")[1]);
+  if(!AUTH&&!UNLOCK&&!h.startsWith("teacher"))html=viewLogin();
+  else if(h.startsWith("lecture-"))html=viewLecture(+h.split("-")[1]);
   else if(h.startsWith("test-"))html=viewTest(+h.split("-")[1]);
   else if(h.startsWith("teacher"))html=viewTeacher();
+  else if(h==="settings")html=viewSettings();
+  else if(!AUTH&&!UNLOCK)html=viewLogin();
   else html=({seminar:viewSeminar,lab:viewLab,tests:viewTests,my:viewMy,final:viewFinal}[h]||viewHome)();
-  document.getElementById("view").innerHTML=html;nav();
+  document.getElementById("view").innerHTML=html;nav();TTS.onRoute();
   document.getElementById("side").classList.remove("show");
   const tf=document.getElementById("tf");if(tf)tf.addEventListener("submit",submitForm);
   const sf=document.getElementById("startF");if(sf)sf.onclick=startFinal;
   const rf=document.getElementById("regf");if(rf)rf.addEventListener("submit",e=>{e.preventDefault();const n=document.getElementById("rnm").value.trim(),g=document.getElementById("rgr").value.trim(),c=document.getElementById("rcd").value.trim();if(!n||!g)return;store.set("me",{name:n,group:g,code:c});apiPost({action:"register"}).catch(()=>{});render()});
   const pf=document.getElementById("pwf");if(pf)pf.addEventListener("submit",async e=>{e.preventDefault();const v=document.getElementById("pw").value;const pm=document.getElementById("pwm");pm.innerHTML='<p class="muted small">Шалгаж байна…</p>';const r=await loadTeacher(v);if(r==="ok"){UNLOCK=true;render()}else pm.innerHTML=`<div class="status bad">${r==="bad"?"Нууц үг буруу байна.":"Сервертэй холбогдож чадсангүй. API хаягаа шалгана уу."}</div>`});
+  const lg=document.getElementById("lgf");if(lg)lg.addEventListener("submit",doLogin);
+  document.querySelectorAll("[data-th]").forEach(b=>b.onclick=()=>{const k=b.dataset.th;THEME={id:k};applyTheme(THEME);const ai=document.getElementById("accIn");if(ai)ai.value=THEMES[k].accent;document.querySelectorAll("[data-th]").forEach(x=>x.classList.toggle("on",x===b))});
+  const ai=document.getElementById("accIn");if(ai)ai.oninput=()=>{THEME=Object.assign({id:(THEME&&THEME.id)||"blue"},THEME,{accent:ai.value});applyTheme(THEME)};
+  const ts=document.getElementById("thSave");if(ts)ts.onclick=async()=>{const t=THEME||{id:"blue"};if(await teacherPost({action:"setTheme",theme:t},"thMsg"))store.set("theme",t)};
+  const rs=document.getElementById("rsSave");if(rs)rs.onclick=async()=>{const list=parseRoster(document.getElementById("rosterIn").value);if(!list.length){document.getElementById("rsMsg").innerHTML='<div class="status bad">Жагсаалт хоосон эсвэл буруу хэлбэртэй.</div>';return}if(await teacherPost({action:"setRoster",roster:list},"rsMsg")){ROSTER=list;document.querySelector("#view h2+p+textarea")}};
   const rb=document.getElementById("refr");if(rb)rb.onclick=async()=>{rb.textContent="…";await loadTeacher(teacherPw);render()};
   document.querySelectorAll("[data-dl]").forEach(b=>{b.onclick=()=>{const a=document.createElement("a");a.href="pdf/"+b.dataset.dl;a.download=b.dataset.dl;document.body.appendChild(a);a.click();a.remove()}});
   const c=document.getElementById("csv");if(c)c.onclick=()=>save("EEA306_niit_dun.csv",csv());
@@ -465,6 +758,7 @@ window.addEventListener("hashchange",()=>{if(cur&&cur.kind==="f"&&!cur.done&&loc
 document.getElementById("menuBtn").onclick=()=>document.getElementById("side").classList.toggle("show");
 document.getElementById("q").addEventListener("input",e=>{const v=e.target.value.trim().toLowerCase();if(!v)return;const l=D.lec.find(x=>(x.t+" "+x.kw.join(" ")).toLowerCase().includes(v));if(l&&location.hash!=="#lecture-"+l.n)location.hash="lecture-"+l.n});
 render();
+loadSettings();
 
 </script>
 
