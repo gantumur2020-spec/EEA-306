@@ -2,15 +2,15 @@
    I.EEA306 «Цахилгаан системийн тогтсон горим» — оноо хадгалах сервер
    Google Apps Script (Google Sheets-тэй холбоотой). Үнэгүй.
    Тохиргоо: Project Settings → Script Properties → PW = багшийн нууц үг
-   Хуудсууд (нэрэнд хичээлийн код): Students (жагсаалт: код, нэр, анги —
-             багш шууд засна), Log (нэвтрэлт, үзсэн хугацаа, тестийн хариулт),
+   Хуудсууд (нэрэнд хичээлийн код): EEA306_Оюутан (жагсаалт: код, нэр, анги —
+             багш шууд засна), EEA306_Log (нэвтрэлт, үзсэн хугацаа, тестийн хариулт),
              EEA306_БиеДаалт (илгээлт, дүн), EEA306_НэгдсэнДүн (автоматаар шинэчлэгдэнэ). Хавсаргасан файл Google Drive-ийн
              «EEA306_Бие_даалт» хавтаст хадгалагдана (багшид л харагдана).
    ===================================================================== */
 const COURSE = 'EEA306';                 // хуудасны нэрт хичээлийн код орно
-const SHEET = 'Log';                     // хуучин өгөгдөлтэй нийцүүлэх
+const SHEET = COURSE + '_Log';
 const HEAD = ['Огноо','SID','Код','Нэр','Анги','Төрөл','Түлхүүр','Оноо','Нийт','Секунд','Өдөр','Лекц','Асуулт'];
-const ROSTER_SHEET = 'Students';
+const ROSTER_SHEET = COURSE + '_Оюутан';
 const BD_SHEET = COURSE + '_БиеДаалт';
 const SUM_SHEET = COURSE + '_НэгдсэнДүн';
 const BD_HEAD = ['Огноо','Код','Нэр','Анги','БД','Бичвэр','Файл','Файлын нэр','Дүн','Тайлбар','Дүгнэсэн'];
@@ -23,7 +23,7 @@ function variant_(code) {
 }
 
 /* Sheet-ийн ID (хаягийн /d/…/ хэсэг). Хоосон бол скриптийн харьяалагдах Sheet-ийг ашиглана. */
-const SHEET_ID = '';   // скрипт өөрийн (bound) Sheet-тэй
+const SHEET_ID = '1BT2N6f5z7Iy5dVUCpo79hLSokLMTvmWbRoN6U7GnsGE';
 function ss_() { return SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActiveSpreadsheet(); }
 function sh_() {
   let s = ss_().getSheetByName(SHEET);
@@ -268,4 +268,17 @@ function setupSheets() {
   if (d && ss_().getSheets().length > 1) ss_().deleteSheet(d);
 }
 /* Эхний жагсаалт: Apps Script засварлагч дээр энэ функцийг нэг удаа ▶ Run хийнэ (Drive-ийн зөвшөөрлийг давхар асууна). */
-function seedRoster() { /* 306: жагсаалт Students хуудсанд аль хэдийн бий */ }
+function seedRoster() {
+  const list = [
+    ['B220000166', 'Б.ЭНХБААТАР', 'ӨмТДС'],
+    ['B252183024', 'Т.ЭРДЭНЭСҮХ', 'ӨмТДС'],
+    ['B252183025', 'Б.СУВДАНЗАЯА', 'ӨмТДС'],
+    ['B252183028', 'Ч.ЦОГНАРАН', 'ӨмТДС'],
+    ['B252183032', 'Г.ГАНГАНЖИВАА', 'ӨмТДС'],
+    ['B252183035', 'О.ОДГАРИГ', 'ӨмТДС'],
+    ['B252183038', 'Б.ОДБАЯР', 'ӨмТДС']
+  ];
+  const s = rosterSheet_();
+  if (s.getLastRow() > 1) s.getRange(2, 1, s.getLastRow() - 1, 3).clearContent();
+  s.getRange(2, 1, list.length, 3).setValues(list);
+}
