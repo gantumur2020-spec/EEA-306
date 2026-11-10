@@ -699,7 +699,7 @@ function labBind(){const add=document.getElementById("labAdd");if(!add)return;co
 /* ---------- quiz engine (lecture test + final exam) ---------- */
 let cur=null,timerId=null;
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function studentFields(){const m=me();if(AUTH)return `<section class="card"><h2>Оюутан</h2><p>${esc(AUTH.name)} · ${esc(AUTH.code)} · ${esc(AUTH.group)}</p><input type="hidden" id="nm" value="${esc(AUTH.name)}"><input type="hidden" id="gr" value="${esc(AUTH.group||"-")}"><input type="hidden" id="cd" value="${esc(AUTH.code)}"></section>`;return `<section class="card"><h2>Оюутны мэдээлэл</h2><div class="formrow"><label class="field" for="nm">Овог нэр<input id="nm" value="${esc(m.name)}" autocomplete="off"></label><label class="field" for="gr">Анги, бүлэг<input id="gr" value="${esc(m.group)}"></label><label class="field" for="cd">Оюутны код<input id="cd" value="${esc(m.code||"")}"></label></div></section>`}
+function studentFields(){const m=me();if(UNLOCK&&!AUTH)return `<section class="card"><h2>Багшийн өөрийгөө шалгах горим</h2><p class="small" style="margin:0">Та багшаар нэвтэрсэн тул тест өгч өөрийгөө шалгаж болно. Дүн хадгалагдахгүй, оюутны дүнд орохгүй. Илгээсний дараа оноо болон зөв, буруу хариулт харагдана.</p></section>`;if(AUTH)return `<section class="card"><h2>Оюутан</h2><p>${esc(AUTH.name)} · ${esc(AUTH.code)} · ${esc(AUTH.group)}</p><input type="hidden" id="nm" value="${esc(AUTH.name)}"><input type="hidden" id="gr" value="${esc(AUTH.group||"-")}"><input type="hidden" id="cd" value="${esc(AUTH.code)}"></section>`;return `<section class="card"><h2>Оюутны мэдээлэл</h2><div class="formrow"><label class="field" for="nm">Овог нэр<input id="nm" value="${esc(m.name)}" autocomplete="off"></label><label class="field" for="gr">Анги, бүлэг<input id="gr" value="${esc(m.group)}"></label><label class="field" for="cd">Оюутны код<input id="cd" value="${esc(m.code||"")}"></label></div></section>`}
 function qHtml(qs){return qs.map((q,i)=>`<div class="q" id="q${i}"><p><span class="qn">${i+1}.</span>${fmt(q.q[0])}${q.lec?` <span class="pill blue">Лекц ${q.lec}</span>`:""}</p>${q.ord.map(k=>`<label><input type="radio" name="a${i}" value="${k}" id="a${i}_${k}"> <span>${fmt(q.q[1][k])}</span></label>`).join("")}<div class="why">${fmt(q.q[3])}</div></div>`).join("")}
 function viewTest(n){
   const qs=D.tests[n];if(!qs)return `<div class="layout full"><div class="col"><h1 style="font-size:24px">Тест ${n}</h1><section class="card"><div class="status warn">Энэ лекцийн тест удахгүй байршина.</div><a class="btn ghost" href="#tests">← Тестүүд</a></section></div></div>`;noteLecture(n);
@@ -720,12 +720,12 @@ function viewFinal(){
   return `<div class="layout"><div class="col"><div class="formrow" style="justify-content:space-between"><h1 style="font-size:24px">Улирлын шалгалт · 30 оноо</h1><span class="timer" id="tm"></span></div>
    <form id="tf">${qHtml(cur.qs)}<div id="res"></div><button class="btn pri" type="submit" id="sub">Илгээх</button></form></div><div class="col"><section class="card"><h2>${esc(cur.name)}</h2><p class="small muted">${esc(cur.group)} · ${esc(cur.code)}</p><p class="small">Үлдсэн хугацаа: <b class="timer" id="tm2"></b></p></section></div></div>`}
 function startFinal(){
-  const name=document.getElementById("nm").value.trim(),group=document.getElementById("gr").value.trim(),code=document.getElementById("cd").value.trim();
+  const TM=UNLOCK&&!AUTH;const name=TM?"Багш":document.getElementById("nm").value.trim(),group=TM?"-":document.getElementById("gr").value.trim(),code=TM?"":document.getElementById("cd").value.trim();
   if(!name||!group){document.getElementById("res").innerHTML='<div class="status bad">Овог нэр, анги бүлгээ бичнэ үү.</div>';return}
-  store.set("me",{name,group,code});
+  if(!TM)store.set("me",{name,group,code});
   const pick=[];D.lec.filter(l=>D.tests[l.n]).forEach((l,i)=>{const k=i%2===0?3:2;shuffle(D.tests[l.n].map((_,j)=>j)).slice(0,k).forEach(j=>pick.push({q:D.tests[l.n][j],lec:l.n,id:l.n+"."+(j+1)}))});
   cur={kind:"f",start:Date.now(),qs:pick.map(p=>Object.assign(p,{ord:shuffle(p.q[1].map((_,i)=>i))})),done:false,name,group,code};
-  store.set("final",{started:new Date().toISOString(),score:null});
+  if(!TM)store.set("final",{started:new Date().toISOString(),score:null});
   render();
   timerId=setInterval(()=>{const left=FINAL_MIN*60-Math.floor((Date.now()-cur.start)/1000);const t=`${Math.max(0,Math.floor(left/60))}:${pad(Math.max(0,left%60))}`;["tm","tm2"].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=t});if(left<=0){clearInterval(timerId);grade(true)}},1000);
 }
@@ -736,15 +736,16 @@ async function grade(forced){
   if(!cur||cur.done)return;
   const res=document.getElementById("res");
   let name,group,code;
-  if(cur.kind==="t"){name=document.getElementById("nm").value.trim();group=document.getElementById("gr").value.trim();code=document.getElementById("cd").value.trim();
+  const TM=UNLOCK&&!AUTH;if(TM){name="Багш";group="-";code=""}else if(cur.kind==="t"){name=document.getElementById("nm").value.trim();group=document.getElementById("gr").value.trim();code=document.getElementById("cd").value.trim();
     if(!name||!group){res.innerHTML='<div class="status bad">Овог нэр, анги бүлгээ бичнэ үү.</div>';return}
     store.set("me",{name,group,code})}else{name=cur.name;group=cur.group;code=cur.code}
   const un=cur.qs.filter((_,i)=>!document.querySelector(`input[name=a${i}]:checked`)).length;
   if(un&&!forced){res.innerHTML=`<div class="status warn">${un} асуултад хариулаагүй байна.</div>`;return}
   let sc=0;cur.qs.forEach((x,i)=>{const c=document.querySelector(`input[name=a${i}]:checked`);const sel=c?+c.value:-1;if(sel===x.q[2])sc++;
-    document.querySelectorAll(`#q${i} label`).forEach(lb=>{const v=+lb.querySelector("input").value;if(cur.kind==="t"&&revOn()){if(v===x.q[2])lb.classList.add("right");else if(v===sel)lb.classList.add("wrong")}lb.querySelector("input").disabled=true})});
-  cur.done=true;clearInterval(timerId);if(cur.kind==="t"&&revOn())document.getElementById("tf").classList.add("done");document.getElementById("sub").disabled=true;
+    document.querySelectorAll(`#q${i} label`).forEach(lb=>{const v=+lb.querySelector("input").value;if(TM||(cur.kind==="t"&&revOn())){if(v===x.q[2])lb.classList.add("right");else if(v===sel)lb.classList.add("wrong")}lb.querySelector("input").disabled=true})});
+  cur.done=true;clearInterval(timerId);if(TM||(cur.kind==="t"&&revOn()))document.getElementById("tf").classList.add("done");document.getElementById("sub").disabled=true;
   const sec=Math.round((Date.now()-cur.start)/1000),at=new Date().toISOString(),tot=cur.qs.length;
+  if(TM){res.innerHTML=`<div class="score"><b>${sc}/${tot}</b><span>Багшийн өөрийгөө шалгах горим · дүн хадгалагдаагүй</span><span>${forced?"Хугацаа дуусч автоматаар илгээгдлээ · ":""}${Math.floor(sec/60)} мин ${sec%60} с</span></div><div class="status ok">Зөв хариулт ногооноор, буруу сонгосон хариулт улаанаар тэмдэглэгдлээ.</div>`;if(cur.kind==="f"){const b=document.createElement("a");b.className="btn ghost";b.href="#home";b.textContent="Шалгалтыг дахин өгөх";b.onclick=e=>{e.preventDefault();cur=null;location.hash="final";render()};res.appendChild(b)}return}
   let key,rec;
   if(cur.kind==="t"){key="t"+pad(cur.n);const L=local();const prev=L[key];L[key]={best:Math.max(sc,prev?prev.best:0),last:sc,attempts:(prev?prev.attempts:0)+1,at};store.set("results",L)}
   else{key="final";store.set("final",{score:sc,at,sec})}
