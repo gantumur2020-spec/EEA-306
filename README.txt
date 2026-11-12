@@ -13,3 +13,4 @@ Apps Script нийтлэгдсэн (Anyone); index.html-ийн API_URL энэ с
 - docs/: EEA306_Bie_daalt.docx/.pdf, EEA306_Laboratori.docx/.pdf нэмэгдэв; EEA306_Hotolbor.docx-д лабораторийн нэр, стендийн тайлбарыг шинэчлэв.
 - Лекц, тест, семинар өөрчлөгдөөгүй.
 GitHub-д: index.html, README.txt, docs/ хавтсын 4 шинэ файл ба EEA306_Hotolbor.docx-г шинэчилж оруулахад хангалттай (pdf/, tts/ өөрчлөгдөөгүй).
+Шинэчлэл [9]
